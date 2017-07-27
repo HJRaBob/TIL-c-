@@ -23,8 +23,7 @@ class Man
 		int getyear(void) const;
 		int getage(void) const;
 
-		int getcount(void) const;
-		int gets_count(void) const;
+		static int gets_count(void);//call static member
 
 		void setname(const char*);
 		void setyear(int);
@@ -68,12 +67,7 @@ int Man::getage(void) const
 	return this->age;
 }
 
-int Man::getcount(void) const
-{
-	return count;
-}
-
-int Man::gets_count(void) const
+int Man::gets_count(void) //not use static
 {
 	return s_count;
 }
@@ -108,14 +102,11 @@ int main(void)
 	m2.disp();
 	m3.disp();
 
-	/* why error?
-	cout << "count(main) : " <<Man::getcount() <<endl;
-	cout << "s_count(main) : " <<Man::gets_count() <<endl;
-	*/
+	cout << "s_count(main) : " <<Man::gets_count() <<endl; //static member is called without object
 
-	/* can't accese (private)
-	cout << "count(main) : " <<Man::count <<endl;
-	cout << "s_count(main) : " << Man::s_count << endl;
-	*/
+
+	/* can't accese (private)*/
+//	cout << "count(main) : " <<Man::count <<endl;
+//	cout << "s_count(main) : " << Man::s_count << endl;
 	return 0;
 }
